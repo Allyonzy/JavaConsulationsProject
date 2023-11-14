@@ -4,6 +4,12 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Person {
+    /**
+     * get и set если мы обращаемя к ним из разных классов ,
+     * как они себя ведут, в том числе в цикле ? перезаписываются
+     * или создают новые ячейки памяти для всех сеторов, и возвращают теже значения?
+     * Если циклов больше одного (два, три ) Как быть с ними ?
+     */
     private String name;
     // ...
 
@@ -12,6 +18,9 @@ public class Person {
 
     //c. Громкость звука - целое число;
     private int qualityLevel;
+
+    //c. Громкость звука - целое число;
+    private Integer age;
 
     //    d. Признак включен ли телевизор.
     private boolean isProjectWorker;
@@ -48,6 +57,15 @@ public class Person {
         if (qualityLevel >= 0 && qualityLevel <= 100) {
             this.qualityLevel = qualityLevel;
         }
+    }
+
+    public static Person customPerson() {
+        Person customPerson = new Person("Индивид");
+        customPerson.setQualityLevel(100);
+        customPerson.isProjectWorker = true;
+        customPerson.departmentNumber = 10;
+
+        return customPerson;
     }
 
     @Override
