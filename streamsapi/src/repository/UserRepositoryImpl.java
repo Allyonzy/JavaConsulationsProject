@@ -45,7 +45,6 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     /**
-     * @param minAge
      * @return
      */
     @Override
