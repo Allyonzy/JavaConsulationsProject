@@ -14,6 +14,6 @@ public class App {
 
         String nameWithMinAge = userRepository.findNameByMinAge();
         System.out.printf("Имя человека с минимальным возрастом %s", nameWithMinAge);
-
+        System.out.println();
     }
 }

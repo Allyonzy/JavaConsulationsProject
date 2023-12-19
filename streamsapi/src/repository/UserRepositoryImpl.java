@@ -11,6 +11,9 @@ import java.util.function.Function;
 public class UserRepositoryImpl implements UserRepository{
     private static final String FILE_NAME = "streamsapi/src/data/input_data.txt";
 
+    /**
+     *  Функция заполнения пользователя через конструктор
+     */
     private static final Function<String, User> userMapper = line -> {
       String[] parseLine = line.split("\\|");
       return new User(
@@ -20,6 +23,21 @@ public class UserRepositoryImpl implements UserRepository{
               Integer.parseInt(parseLine[3]),
               Boolean.getBoolean(parseLine[4])
       );
+    };
+
+    /**
+     *  Функция заполнения пользователя через сеттеры
+     */
+    private static final Function<String, User> userMapperSetters = line -> {
+        String[] parseLine = line.split("\\|");
+        User user = new User();
+        user.setId(Integer.parseInt(parseLine[0]));
+        user.setLogName(parseLine[1]);
+        user.setAvatarColor(parseLine[2]);
+        user.setAge(Integer.parseInt(parseLine[3]));
+        user.setActive(Boolean.getBoolean(parseLine[4]));
+
+        return user;
     };
 
     /**
@@ -52,7 +70,7 @@ public class UserRepositoryImpl implements UserRepository{
         try(BufferedReader reader = new BufferedReader(new FileReader((FILE_NAME)))) {
             Optional<User> minAgeUser = reader
                     .lines()
-                    .map(userMapper)
+                    .map(userMapperSetters)
                     .min(Comparator.comparingInt(User::getAge));
 
             return minAgeUser.map(User::getLogName).orElse(null);
@@ -69,7 +87,7 @@ public class UserRepositoryImpl implements UserRepository{
         try(BufferedReader reader = new BufferedReader(new FileReader((FILE_NAME)))) {
             List<Integer> agesByColor = reader
                     .lines()
-                    .map(userMapper)
+                    .map(userMapperSetters)
                     .filter(user -> user.getAvatarColor().equals(color))
                     .map(User::getAge)
                     .toList();
