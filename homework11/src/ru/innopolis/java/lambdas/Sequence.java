@@ -2,17 +2,26 @@ package ru.innopolis.java.lambdas;
 
 public class Sequence {
     public static int[] filter (int[] inputNumbers, ByCondition condition) {
-        int[] resultNumbers = new int[inputNumbers.length];
+        boolean[] resultConditions = new boolean[inputNumbers.length];
 
-        int count = 0;
+        int size = 0;
 
-        for (int inputNumber : inputNumbers) {
-            if (condition.isOk(inputNumber)) {
-                resultNumbers[count] = inputNumber;
-                count++;
+        for (int pos = 0; pos < inputNumbers.length; pos++) {
+            resultConditions[pos] = condition.isOk(inputNumbers[pos]);
+            if(resultConditions[pos]) {
+                size++;
             }
         }
 
+        int[] resultNumbers = new int[size];
+
+        int count = 0;
+        for (int pos = 0; pos < resultConditions.length; pos++) {
+            if(resultConditions[pos]) {
+                resultNumbers[count] = inputNumbers[pos];
+                count++;
+            }
+        }
         return resultNumbers;
     }
 }

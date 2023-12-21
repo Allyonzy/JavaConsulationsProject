@@ -21,11 +21,11 @@ public class App {
         try (Scanner scanner = new Scanner(System.in)){
             System.out.println("Введите новый массив чисел через запятую: ");
             String newNumbersAsStr = scanner.nextLine();
-            String[] newNumbersAsStrList = newNumbersAsStr.split(",\\s+");
-            int[] numbersFromConsole = new int[newNumbersAsStrList.length];
-            for (int position = 0; position < newNumbersAsStrList.length; position++) {
-                numbersFromConsole[position] = Integer.parseInt(newNumbersAsStrList[position]);
-            }
+
+            int[] numbersFromConsole = Arrays
+                    .stream(newNumbersAsStr.split(",\\s+"))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
 
             System.out.println("Чётные элементы массива: " + Arrays.toString(Sequence.filter(numbersFromConsole, conditionOne)));
             System.out.println("Числа массива, которые делятся на 3: " + Arrays.toString(Sequence.filter(numbersFromConsole, conditionTwo)));
