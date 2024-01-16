@@ -1,0 +1,20 @@
+this.name = name;
+        this.departmentNumber = departmentNumber;
+        this.qualityLevel = qualityLevel;
+        this.isProjectWorker = isProjectWorker;
+
+Миша
+4
+80
+
+Паша
+4
+50
+
+Толик
+10
+100
+
+Шурик
+6
+100
