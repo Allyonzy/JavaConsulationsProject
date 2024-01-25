@@ -15,6 +15,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javadoc.plugin.version>3.1.1</javadoc.plugin.version>
     <source.plugin.version>3.2.0</source.plugin.version>
+    <maven.surfire.version>3.2.5</maven.surfire.version>
+    <maven.jar.version>3.3.0</maven.jar.version>
+    <junit.version>5.8.1</junit.version>
+    <mockito.version>5.8.0</mockito.version>
   </properties>
 
   <build>
@@ -22,11 +26,24 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.1.2</version>
+        <version>${maven.surfire.version}</version>
         <configuration>
           <includes>
             */*Test.java
           </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven.jar.version}</version>
+        <configuration>
+          <archive>
+<!--            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>-->
+            <manifest>
+              <mainClass>ru.innopolis.App</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
@@ -41,20 +58,20 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.8.1</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
-      <version>5.8.1</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
-      <version>5.8.0</version>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
