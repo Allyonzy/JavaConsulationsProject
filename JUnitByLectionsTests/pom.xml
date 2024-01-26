@@ -3,11 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>ru.innopolis.java</groupId>
-    <artifactId>JUnitByLectionsTests</artifactId>
+    <groupId>ru.innopolis</groupId>
+    <artifactId>TestMavenProject</artifactId>
     <version>0.1</version>
-
     <build>
         <plugins>
             <plugin>
@@ -30,7 +28,6 @@
             </plugin>
         </plugins>
     </build>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
         <dependency>
@@ -68,6 +65,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-
 </project>
