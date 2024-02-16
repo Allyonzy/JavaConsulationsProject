@@ -19,124 +19,52 @@ public class UsersRepositoryFileImpl implements UsersRepository {
 
     @Override
     public void create(User user) throws InvalidUserDataException, DataAccessException {
-        validateUser(user); // Вынесение проверок в отдельный метод
-
-        try {
-            if (findById(user.getId()) == null) {
-                fileDataManager.appendLine(userToString(user));
-            } else {
-                throw new RuntimeException("Пользователь с таким идентификатором уже существует");
-            }
-        } catch (IOException e) {
-            throw new DataAccessException("Ошибка при записи пользователя в файл", e);
-        }
+        //todo добавить функционал
     }
 
     @Override
     public void validateUser(User user) throws InvalidUserDataException {
-        if (user.getId() == null || user.getId().isEmpty()) {
-            throw new InvalidUserDataException("ID пользователя не может быть пустым");
-        }
-        if (user.getLogin() == null || user.getLogin().isEmpty()) {
-            throw new InvalidUserDataException("Логин не может быть пустым");
-        }
-        if (user.getPassword() == null || user.getPassword().isEmpty()) {
-            throw new InvalidUserDataException("Пароль не может быть пустым");
-        }
-        if (user.getAge() < 18) {
-            throw new InvalidUserDataException("Возраст пользователя должен быть не меньше 18 лет");
-        }
+        //todo добавить функционал
     }
 
     @Override
     public User findById(String id) throws DataAccessException {
-        try {
-            List<String> lines = fileDataManager.readAllLines();
-            for (String line : lines) {
-                User user = stringToUser(line);
-                if (user.getId().equals(id)) {
-                    return user;
-                }
-            }
-        } catch (IOException e) {
-            throw new DataAccessException("Ошибка при доступе к данным файла", e);
-        }
+        //todo добавить функционал
         return null;
     }
 
     @Override
     public List<User> findAll() {
-        List<User> users = new ArrayList<>();
-        try {
-            List<String> lines = fileDataManager.readAllLines();
-            for (String line : lines) {
-                users.add(stringToUser(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return users;
+        //todo добавить функционал
+        return new ArrayList<>();
     }
 
     @Override
     public void update(User user) {
-        try {
-            List<User> users = findAll();
-            boolean found = false;
-            for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).getId().equals(user.getId())) {
-                    users.set(i, user);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                users.add(user);
-            }
-            rewriteFile(users);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //todo добавить функционал
     }
 
     @Override
     public void deleteById(String id) {
-        try {
-            List<User> users = findAll();
-            users.removeIf(u -> u.getId().equals(id));
-            rewriteFile(users);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //todo добавить функционал
     }
 
     @Override
     public void deleteAll() {
-        try {
-            fileDataManager.clearFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //todo добавить функционал
     }
 
     private void rewriteFile(List<User> users) throws IOException {
-        List<String> lines = new ArrayList<>();
-        for (User user : users) {
-            lines.add(userToString(user));
-        }
-        fileDataManager.writeAllLines(lines);
+        //todo добавить функционал
     }
 
     private String userToString(User user) {
-        return user.getId() + "|" + user.getDateAdded() + "|" + user.getLogin() + "|" + user.getPassword() + "|" +
-                user.getConfirmPassword() + "|" + user.getLastName() + "|" + user.getFirstName() + "|" +
-                user.getMiddleName() + "|" + user.getAge() + "|" + user.isWorker();
+        //todo добавить функционал
+        return String.valueOf("");
     }
 
     private User stringToUser(String str) {
-        String[] parts = str.split("\\|");
-        return new User(parts[0], LocalDateTime.parse(parts[1]), parts[2], parts[3], parts[4], parts[5], parts[6],
-                parts[7], parts.length > 8 ? Integer.parseInt(parts[8]) : null, parts.length > 9 && Boolean.parseBoolean(parts[9]));
+        //todo добавить функционал
+        return new User();
     }
 }
