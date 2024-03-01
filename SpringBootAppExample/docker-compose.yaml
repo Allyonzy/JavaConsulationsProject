@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:14'
+    container_name: 'java-postgres-new'
+    ports:
+    - 5433:5433
+    entrypoint:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=1111111'
+      - 'POSTGRES_DB=postgres'
+  app:
+    build: .
+    ports:
+      - 8080:8080

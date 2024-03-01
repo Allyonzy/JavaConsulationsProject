@@ -1,0 +1,8 @@
+FROM khipu/openjdk17-alpine
+MAINTAINER Yelena Korneeva <e.korneeva@innopolis.ru>
+
+ARG JAR_FILE=target/spring-boot-app-example-0.1.jar
+WORKDIR /opt/app
+COPY ${JAR_FILE} app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "app.jar"]
