@@ -1,0 +1,5 @@
+1|Mercedes|Голубой|56|true
+2|Volga|Красный|21|true
+3|Lexus|Голубой|15|false
+4|Volga|Голубой|32|true
+5|Toyota|Красный|78|true

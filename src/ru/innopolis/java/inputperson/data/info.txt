@@ -1,0 +1,6 @@
+Kirill|Kiselev|21
+Vladislav|Malyshev|19
+Stas|Clear|41
+Kirill|Ivanov|15
+Timofey|Antipin|31
+Александр|Тимофеев|15
